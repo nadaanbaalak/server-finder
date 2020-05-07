@@ -34,7 +34,7 @@ function findServer(servers) {
           if (serverPriority != null && serverPriority != undefined) {
             resolve(servers[serverIndex].url);
           } else {
-            reject("All servers offline");
+            reject("No Server Online");
           }
         })
       )
@@ -42,24 +42,4 @@ function findServer(servers) {
   });
 }
 
-findServer([
-  {
-    url: "https://httpstat.us/401",
-    priority: 1,
-  },
-  {
-    url: "https://httpstat.us/402",
-    priority: 3,
-  },
-  {
-    url: "https://httpstat.us/300",
-    priority: 2,
-  },
-  {
-    url: "https://httpstat.us/404",
-    priority: 4,
-  },
-])
-  .then((res) => console.log(res))
-  .catch((err) => console.log(err));
 module.exports.findServer = findServer;
